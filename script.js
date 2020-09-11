@@ -1,8 +1,8 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var testPrompt = prompt("Enter Number of Characters");
 
 var combinedArray = [];
+var passwordArray = [];
 
 var confirmUpperCase;
 var confirmLowerCase;
@@ -18,23 +18,24 @@ var specialCharcters = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "
 
 function generatePassword() {
 
-  var testPrompt = prompt("Enter Number of Characters");
+  var numberOfCharacters = prompt("Enter Number of Characters");
 
-  if (testPrompt < 8) {
+  if (numberOfCharacters < 8) {
     alert("Must be at least 8");
     return "Try again"
   }
-  else if (testPrompt > 128) {
+  else if (numberOfCharacters > 128) {
     alert("Must be less than 129");
     return "Try again"
   }
 
+else {
 
   confirmUpperCase = confirm("Would you like upper case?");
 
   if (confirmUpperCase) {
     for (var index = 0; index < upperCase.length; index++) {
-      combinedArray.push(upperCase[i]);
+      combinedArray.push(upperCase[index]);
     }
   }
 
@@ -43,7 +44,7 @@ function generatePassword() {
 
   if (confirmLowerCase) {
     for (var index = 0; index < lowerCase.length; index++) {
-      combinedArray.push(lowerCase[i]);
+      combinedArray.push(lowerCase[index]);
     }
   }
 
@@ -51,47 +52,31 @@ function generatePassword() {
 
   if (confirmNumbers) {
     for (var index = 0; index < numbers.length; index++) {
-      combinedArray.push(numbersCase[i]);
+      combinedArray.push(numbers[index]);
     }
   }
 
   confirmSpecialCharacters = confirm("Would you like special characters?")
-  
+
   if (confirmSpecialCharacters) {
     for (var index = 0; index < specialCharcters.length; index++) {
-      combinedArray.push(specialCharcters[i]);
+      combinedArray.push(specialCharcters[index]);
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  for (var index = 0; index < combinedArray.length; index++) {
+    combinedArray.push(combinedArray[index]);
+  }
 }
 
+for (var index = 0; index < numberOfCharacters; index++) {
+  passwordArray.push(combinedArray[ ( Math.floor(Math.random() * combinedArray.length))]);
+  }
 
+userPassword = passwordArray.join("");
 
+return userPassword;
 
-
-
-
-
-
-
-
-
+}
 
 // Write password to the #password input
 function writePassword() {
